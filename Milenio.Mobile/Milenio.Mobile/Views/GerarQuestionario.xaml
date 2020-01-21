@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib" 
+             x:Class="Mobile.Views.GerarQuestionario"
+             xmlns:controle="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             Title="Gerar Questionário">
+    <StackLayout Padding="10">
+        <!-- Cidade -->
+        <Label Text="Cidade *" FontSize="16" />
+        <controle:AutoSuggestBox x:Name="cidade" 
+                                WidthRequest="200"
+                TextChanged="AutoSuggestBox_TextChangedCidade"
+                QuerySubmitted="AutoSuggestBox_QuerySubmittedCidade"
+                SuggestionChosen="AutoSuggestBox_SuggestionChosenCidade"
+                                 />
+        <!-- Tipo Instituição -->
+        <Label Text="Tipo de Instituição *" FontSize="16"/>
+        <Picker x:Name="pckTipoInstituicao" HorizontalOptions="FillAndExpand" 
+            Title="Selecione" FontSize="16"
+            SelectedIndexChanged="pckTipoInstituicao_SelectedIndexChanged">
+            <Picker.Items>
+                <x:String></x:String>
+                <x:String>Educação</x:String>
+                <x:String>Saúde</x:String>
+            </Picker.Items>
+        </Picker>
+        <!-- Instituição-->
+        <Label Text="Instituição *" FontSize="16"/>
+        <SearchBar x:Name="SearchConteudo" 
+                   TextChanged="SearchConteudo_TextChanged" FontSize="14" TextColor="Black" 
+                    Placeholder = "Informe uma instituição"
+                   AbsoluteLayout.LayoutFlags="WidthProportional"/>
+
+        <ListView x:Name="listaEstados" 
+                      ItemTapped="ListaEstado_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate x:Name="dtTemplate">
+                    <ViewCell x:Name="vcViewCell">
+                        <Label x:Name="lbInstitutos" Text="{Binding .}" FontSize="12" Margin="20,5"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Data -->
+        <Label Text="Data da Visita" FontSize="16"/>
+        <DatePicker x:Name="txtData" Date="{x:Static system:DateTime.Today}" />
+        <Button x:Name="btConfirmar" Text="Confirmar"  BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start"
+                    BorderRadius="10" BorderWidth="5" Clicked="BtConfirmar_Clicked"/>
+
+    </StackLayout>
+</ContentPage>

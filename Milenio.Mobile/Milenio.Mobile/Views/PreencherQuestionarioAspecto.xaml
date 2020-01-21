@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.PreencherQuestionarioAspecto"
+             Title="Preencher Questionário">
+    <Grid Padding="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Text="Protocolo" FontAttributes="Bold"></Label>
+        <Label x:Name="lbProtocolo" Grid.Row="1" Grid.Column="0" Text="{Binding Protocolo}"></Label>
+        <Label Grid.Row="0" Grid.Column="1" Text="Data da Visita" FontAttributes="Bold" HorizontalOptions="EndAndExpand"></Label>
+        <Label x:Name="lbDataVisita" Grid.Row="1" Grid.Column="1" Text="{Binding DataVisita}" HorizontalOptions="EndAndExpand"></Label>
+        <Label Grid.Row="2"  Grid.Column="0" Text="Cidade" FontAttributes="Bold"></Label>
+        <Label x:Name="lbCidade" Grid.Row="3"  Grid.Column="0" Text="{Binding Cidade}"></Label>
+        <Label Grid.Row="4"  Grid.Column="0" Text="Instituição" FontAttributes="Bold"></Label>
+        <StackLayout Orientation="Horizontal" Grid.Row="5"  Grid.RowSpan="2" Grid.ColumnSpan="2" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label x:Name="lbInstituicao"  Text="{Binding Instituicao}" ></Label>
+        </StackLayout>    
+        <StackLayout Orientation="Horizontal"  Padding="0"  BackgroundColor="#9A3334"  Grid.Row="6"  Grid.ColumnSpan="2" 
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label Text="Aspecto" TextColor="White" FontAttributes="Bold" FontSize="Medium" 
+               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Grid.RowSpan="2" Grid.Row="7" Grid.ColumnSpan="2" BackgroundColor="White">
+            <ListView x:Name="listView"  ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame  HasShadow="True" BorderColor="White" BackgroundColor="LightGray" Padding="10,0">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0" >
+                                    <Label x:Name="lbDescricao" Text="{Binding descricao}"  TextColor="Black" FontSize="16" 
+                                            HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Grid>
+</ContentPage>

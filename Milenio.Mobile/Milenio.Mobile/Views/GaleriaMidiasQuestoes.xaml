@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.GaleriaMidiasQuestoes"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+              x:Name="CarouselViewModel"
+             Title="Mídia Questão">
+    <Grid Padding="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" Text="Protocolo" FontAttributes="Bold"/>
+        <Label x:Name="lbProtocolo" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand"/>
+        <Label Grid.Row="0"  Grid.ColumnSpan="16" Text="Data da Visita" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        <Label x:Name="lbDataVisita" Grid.Row="1"  Grid.ColumnSpan="16" HorizontalOptions="EndAndExpand"/>
+        <Label Grid.Row="2"  Grid.Column="0" Text="Cidade" FontAttributes="Bold"/>
+        <Label x:Name="lbCidade" Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="16" />
+        <Label Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="16" Text="Instituição" HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+        <StackLayout Orientation="Horizontal" Grid.Row="5"  Grid.RowSpan="2" Grid.ColumnSpan="16" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label x:Name="lbInstituicao"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"  Grid.Row="6"  Grid.ColumnSpan="16"  Grid.RowSpan="2"  Padding="0"  BackgroundColor="#9A3334" >
+            <Label x:Name="lbAspecto"  BackgroundColor="#9A3334" TextColor="White" FontAttributes="Bold" FontSize="14" 
+               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Grid.Row="8"  Grid.RowSpan="2" Grid.ColumnSpan="16"  BackgroundColor="#9A3334">
+            <Label x:Name="lbQuestao" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
+        </StackLayout>
+        <cv:CarouselViewControl x:Name="carousel"
+        ItemsSource="{Binding Views}"
+        ShowArrows="true"
+        ShowIndicators="False"        
+        PositionSelectedCommand="{Binding PositionCommand}"
+        Position="{Binding TotalImagens}"
+        PositionSelected="Handle_PositionSelected"
+        Scrolled="Handle_Scrolled"
+        Orientation="Horizontal" Margin="1,1,1,1"  Grid.Row="10"  Grid.ColumnSpan="16" >
+        </cv:CarouselViewControl>
+
+        <StackLayout  Orientation="Horizontal" Grid.Row="11" Grid.ColumnSpan="15" >
+          
+            <Grid Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0">
+                <Label  HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="1">
+                <Label x:Name="right"  FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+                <Label x:Name="de" Text="de"  FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+                <Label x:Name="left"  FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <!--<ImageButton x:Name="btGaleriaAspecto"  Source="grid.png"  HorizontalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>-->
+            <ImageButton x:Name="btExcluirAspecto"  Source="delete.png" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="20" 
+                           Clicked="BtExcluirQuestao_Clicked" Grid.Row="0" Grid.Column="2"/>
+
+            <!-- Command="{Binding Path=BindingContext.ButtonClickExcluirMidiaCentral, Source={x:Reference carousel}}"
+                                                         CommandParameter="{Binding } "-->
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>

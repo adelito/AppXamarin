@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mobile.ViewModel"
+             x:Class="Mobile.Views.VisualizarQuestionariosBaixados"
+             Title="Questionários Baixados"
+             x:Name="QuestionarioViewModel">
+   <!--<ContentPage.BindingContext>
+        <local:QuestionarioViewModel />
+    </ContentPage.BindingContext>-->
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="0"/>
+            <Setter Property="RowSpacing" Value="0"/>
+        </Style>
+    </ContentPage.Resources>
+   
+        <ListView x:Name="QuestionariosBaixados"
+        Margin="5" RowHeight="100" ItemsSource="{Binding GetQuestionarioBaixado}"  HasUnevenRows="true">
+        <ListView.ItemTemplate RowHeight="100">
+            <DataTemplate>
+                <ViewCell>
+                        <Frame  HasShadow="True" BorderColor="White" BackgroundColor="LightGray" Padding="10,0">
+                            <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="23"></RowDefinition>
+                                <RowDefinition Height="23"></RowDefinition>
+                                <RowDefinition Height="23"></RowDefinition>
+                                <RowDefinition Height="23"></RowDefinition>
+                                <RowDefinition Height="23"></RowDefinition>
+                                <RowDefinition Height="23"></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="120"></ColumnDefinition>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout  Grid.Row="2" Grid.Column="2">
+                                <ImageButton x:Name="btExcluirQuestionario"  Source="delete.png" 
+                                             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30" 
+                                              Command="{Binding Path=BindingContext.ExcluirQuestionario , Source={x:Reference QuestionarioViewModel}}"
+                                                     CommandParameter="{Binding .}" />
+                               
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="2">
+                                <ImageButton x:Name="btPreencherQuestionario"  Source="pencil_edit.png" 
+                                             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30" 
+                                              Command="{Binding Path=BindingContext.PreencherQuestionario , Source={x:Reference QuestionarioViewModel}}"
+                                                     CommandParameter="{Binding .}" />
+                                
+                            </StackLayout>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Protocolo" FontAttributes="Bold"></Label>
+                            <Label x:Name="lbProtocolo" Grid.Row="1" Grid.Column="0" Text="{Binding Protocolo}"></Label>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Data da Visita" FontAttributes="Bold"></Label>
+                            <Label x:Name="lbDatavisita" Grid.Row="1" Grid.Column="1" Text="{Binding DataVisita}"></Label>
+                            <Label Grid.Row="2"  Grid.Column="0" Text="Cidade" FontAttributes="Bold"></Label>
+                            <Label x:Name="lbCidade" Grid.Row="3"  Grid.Column="0" Text="{Binding Cidade}"></Label>
+                            <Label Grid.Row="4"  Grid.Column="0" Text="Instituição" FontAttributes="Bold"></Label>
+                            <Label x:Name="lbInstituicao" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="3"  Grid.RowSpan="3" Text="{Binding Instituicao}"></Label>
+                        </Grid>
+    </Frame>
+    </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+   
+</ContentPage>

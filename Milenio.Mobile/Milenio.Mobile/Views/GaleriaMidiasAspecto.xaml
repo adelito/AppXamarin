@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.GaleriaMidiasAspecto"
+            xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             Title="Mídias Aspectos">
+    <Grid Padding="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Text="Protocolo" FontAttributes="Bold"/>
+        <Label x:Name="lbProtocolo" Grid.Row="1" Grid.Column="0"/>
+        <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6" Text="Data da Visita" FontAttributes="Bold"/>
+        <Label x:Name="lbDataVisita" Grid.Row="1" Grid.Column="2"  Grid.ColumnSpan="8" />
+        <Label Grid.Row="2"  Grid.Column="0" Text="Cidade" FontAttributes="Bold"/>
+        <Label x:Name="lbCidade" Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="8" />
+        <Label Grid.Row="4"  Grid.Column="0" Text="Instituição" FontAttributes="Bold" />
+        <Label x:Name="lbInstituicao" Grid.Row="5"  Grid.ColumnSpan="8"  />
+        <Label x:Name="lbAspecto" Grid.Row="6"  Grid.ColumnSpan="14"  BackgroundColor="#9A3334" TextColor="White" FontAttributes="Bold" FontSize="Medium" 
+               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <forms:CarouselView x:Name="MainCarouselView"  Margin="1,1,1,1"  Grid.Row="7"  Grid.ColumnSpan="14"  ItemSelected="MainCarouselView_ItemSelected">
+                <forms:CarouselView.ItemTemplate >
+                    <DataTemplate>
+                        <Image Source="{Binding caminho}" HorizontalOptions="Center" Aspect="AspectFit"/>
+                        
+                </DataTemplate>
+                </forms:CarouselView.ItemTemplate>
+            </forms:CarouselView>
+           
+        <StackLayout  Orientation="Horizontal" Grid.Row="8" Grid.ColumnSpan="14">
+            <ImageButton x:Name="btGaleriaAspecto"  Source="grid.png"  HorizontalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
+            <ImageButton x:Name="btExcluirAspecto"  Source="delete.png" HorizontalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20" Clicked="BtExcluirAspecto_Clicked" />
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>

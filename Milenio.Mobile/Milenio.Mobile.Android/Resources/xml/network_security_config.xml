@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+  <domain-config cleartextTrafficPermitted="true">
+   <domain includeSubdomains="true">milenio-app.tst.sistemas.intranet.mpba.mp.br</domain>
+   <domain includeSubdomains="true">10.130.155.44</domain>
+  </domain-config>
+</network-security-config>

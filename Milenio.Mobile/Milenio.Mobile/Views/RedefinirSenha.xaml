@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.RedefinirSenha"
+             Title="Alterar Senha">
+   <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lbUsuario"  HorizontalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" TextColor="Black"  />
+            </Grid>
+            <Entry x:Name="txtSenhaAtual"  Grid.Row="2"  Placeholder="Senha Atual *"  FontSize="16" IsPassword="True"/>
+            <Entry x:Name="txtNovaSenha"  Grid.Row="3"  Placeholder="Nova Senha *"  FontSize="16" IsPassword="True"/>
+            <Entry x:Name="txtConfirmaNovaSenha"  Grid.Row="4"  Placeholder="Repita Nova Senha *"  FontSize="16" IsPassword="True"/>
+            <Grid Grid.Row="6">      
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--<Button  x:Name="btCancelar" Text="Cancelar"  Grid.Column="0" BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start" 
+                    BorderRadius="10" BorderWidth="5"  Margin="0,0,0,0"  Clicked="BtCancelar_Clicked"/>-->
+                <Button x:Name="btRedefinirSenha" Text="Confirmar" Grid.Column="1" BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start"
+                    BorderRadius="10" BorderWidth="5"  Margin="0,0,0,0" Clicked="BtRedefinirSenha_Clicked" />
+            </Grid>
+        </Grid>
+       
+    </Grid>
+    
+</ContentPage>

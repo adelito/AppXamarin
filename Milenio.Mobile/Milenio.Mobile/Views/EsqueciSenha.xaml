@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack"
+             x:Class="Milenio.Mobile.Views.EsqueciSenha"
+             Title="Redefinir Senha">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Entry x:Name="txtUsuario" Keyboard="Text" Grid.Row="1"  Placeholder="Usuário *"  FontSize="16" TextChanged="TxtUsuario_TextChanged" />
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btCancelar" Text="Cancelar"  Grid.Column="0" BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start" 
+                    BorderRadius="10" BorderWidth="5"  Margin="0,0,0,0" Clicked="BtCancelar_Clicked"/>
+                <Button x:Name="btConfirmarEsqueciSenha" Text="Confirmar" Grid.Column="1" BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start"
+                    BorderRadius="10" BorderWidth="5"  Margin="0,0,0,0" Clicked="BtConfirmarEsqueciSenha_Clicked" />
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

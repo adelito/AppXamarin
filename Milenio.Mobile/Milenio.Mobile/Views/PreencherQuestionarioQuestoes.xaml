@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.PreencherQuestionarioQuestoes"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:local="clr-namespace:Mobile.ViewModel"
+             Title="Preencher Questionário"
+             x:Name="QuestoesViewModel">
+    
+    <Grid Padding="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="130*"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>    
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0"  Text="Protocolo" Grid.ColumnSpan="6" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+        <Label x:Name="lbProtocolo" Grid.Row="1"  HorizontalOptions="StartAndExpand"/>
+        <Label Grid.Row="0"   Text="Data da Visita" Grid.ColumnSpan="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+        <Label x:Name="lbDataVisita" Grid.Row="1"  Grid.ColumnSpan="12" HorizontalOptions="EndAndExpand"/>
+        <Label Grid.Row="2"  Grid.Column="0" Text="Cidade" FontAttributes="Bold" Grid.ColumnSpan="8"/>
+        <Label x:Name="lbCidade" Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="12"/>
+        <Label Grid.Row="4"  Grid.Column="0" Text="Instituição" FontAttributes="Bold" Grid.ColumnSpan="12"/>
+        <StackLayout Orientation="Horizontal" Grid.Row="5"  Grid.RowSpan="8" Grid.ColumnSpan="12" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label x:Name="lbInstituicao"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"  Padding="0"  BackgroundColor="#9A3334"  Grid.Row="6"  Grid.ColumnSpan="12">
+            <Label x:Name="lbAspecto" BackgroundColor="#9A3334" TextColor="White" FontAttributes="Bold" FontSize="Default"
+               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand"  Grid.Row="7" Grid.ColumnSpan="12" BackgroundColor="White" >
+
+            <ListView x:Name="lvQuestoes" SeparatorVisibility="Default" HasUnevenRows="True" ItemsSource="{Binding MyList}" 
+                      IsPullToRefreshEnabled="false">
+               
+                <ListView.ItemTemplate>
+                   
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame  HasShadow="False" Padding="5">
+                                <StackLayout >
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label  Text="{Binding questao}"  TextColor="Black"/>
+                                            <!-- <Label x:Name="idQuestao" Text="{Binding id}" TextColor="Black" IsVisible="true"/>-->
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Padding="10,0" Spacing="12" Orientation="Horizontal" IsVisible="{Binding pergunta}">
+                                        <input:RadioButtonGroupView x:Name="respostaId" Orientation="Horizontal" IsVisible="{Binding perguntaAberta}"
+                                                            HorizontalOptions="StartAndExpand" IsEnabled="{Binding habilitado}" SelectedIndex="{Binding resposta}"  >
+                                            <input:RadioButton x:Name="ckSim" Text="Sim" TextFontSize="12" Color="Black"  IsEnabled="{Binding habilitado}"
+                                                      ClickCommand="{Binding Path=BindingContext.RadionButtonCommandRespostaQuestao, Source={x:Reference QuestoesViewModel}}"
+                                                       CommandParameter="{Binding .}"/>
+                                            <input:RadioButton x:Name="ckNao" Text="Não" TextFontSize="12" Color="Black"  IsEnabled="{Binding habilitado}"
+                                                                ClickCommand="{Binding Path=BindingContext.RadionButtonCommandRespostaQuestao, Source={x:Reference QuestoesViewModel}}"
+                                                       CommandParameter="{Binding .}"/>
+
+                                            <input:RadioButton x:Name="ckna" Text="N/A" TextFontSize="12" Color="Black" IsEnabled="{Binding habilitado}"
+                                                                ClickCommand="{Binding Path=BindingContext.RadionButtonCommandRespostaQuestao, Source={x:Reference QuestoesViewModel}}"
+                                                       CommandParameter="{Binding .}"/>
+
+                                        </input:RadioButtonGroupView>
+                                        <StackLayout Orientation="Horizontal"  Padding="3,0"  HorizontalOptions="EndAndExpand">
+                                            <Grid Padding="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"></RowDefinition>
+
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="25"></ColumnDefinition>
+                                                    <ColumnDefinition Width="25"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <ImageButton x:Name="btGaleriaQuestao"  Source="grid_2.png" BackgroundColor="White" 
+                                                            VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="12"        
+                                                         Command="{Binding Path=BindingContext.ButtonClickCommandGaleria, Source={x:Reference QuestoesViewModel}}"
+                                                         CommandParameter="{Binding .}"  />
+
+                                                <ImageButton x:Name="btCameraQuestao" Source="photo_2.png" BackgroundColor="White" IsEnabled="{Binding quantidadeMidia}"
+                                                                    VerticalOptions="EndAndExpand"  HorizontalOptions="EndAndExpand"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="12"
+                                                Command="{Binding Path=BindingContext.ButtonClickCommandFoto, Source={x:Reference QuestoesViewModel}}"
+                                                         CommandParameter="{Binding .}"/>
+                                            </Grid>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" BackgroundColor="Black"  IsVisible="{Binding pergunta}">
+                                        <Frame BorderColor="LightGray" HasShadow="False" Padding="0" IsVisible="{Binding habilitado}">
+                                            <Editor x:Name="txtObservacao"  Placeholder="{Binding tipoPergunta}" Text="{Binding observacao}"
+                                                             FontSize="14"  MaxLength="1000" AutoSize="TextChanges" IsEnabled="true"/>
+                                        </Frame>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+        
+            <StackLayout  Grid.Row="8" Grid.ColumnSpan="12" Orientation="Vertical">
+
+            <Frame BorderColor="LightGray" HasShadow="False" Padding="0">
+                <ScrollView>
+                    <Editor x:Name="txtObeservacaoAspect"  Placeholder="Observação Aspecto"
+                                FontSize="14" AutoSize="TextChanges" HorizontalOptions="Fill" MaxLength="8000" VerticalOptions="FillAndExpand" Unfocused="TxtObeservacaoAspect_Unfocused"  />
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+       
+        <StackLayout  Grid.Row="9" Grid.ColumnSpan="12" Orientation="Horizontal">
+            <!--<ImageButton x:Name="btGaleriaAspecto"  Source="grid.png"  HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Clicked="BtGaleriaAspecto_Clicked"/>-->
+            <!--<ImageButton x:Name="btCameraAspecto" Source="imageaddbutton.png"  HorizontalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20" Clicked="TipoFotoAspecto"/>-->
+            <ImageButton x:Name="btSalvarAspecto"  Source="salvar.png"  HorizontalOptions="CenterAndExpand"   HeightRequest="55" WidthRequest="70"  
+                             Command="{Binding Path=BindingContext.ButtonClickCommandRespostaSalvar, Source={x:Reference QuestoesViewModel}}"
+                             CommandParameter="{Binding MyList}" Aspect="AspectFill" />
+            <ImageButton x:Name="btEnviarAspecto" Source="enviar.png"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="55" WidthRequest="70"
+                         Command="{Binding Path=BindingContext.ButtonClickCommandEnviarQuestionario, Source={x:Reference QuestoesViewModel}}"
+                             CommandParameter="{Binding MyList}" Aspect="AspectFill"
+                         />
+            <!--<ImageButton x:Name="btEnviarAspecto" Source="enviar.png"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="55" WidthRequest="70"  Clicked="BtEnviarAspecto_Clicked"  Aspect="AspectFill"/>-->
+        </StackLayout>
+
+    </Grid>
+  
+</ContentPage>

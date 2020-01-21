@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mobile"
+             x:Class="Mobile.MainPage">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="#B7B6BB">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0" Grid.Row="0" >
+            <Label Text="Informe Usuário e Senha" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="16"/>
+            <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+        </StackLayout>
+        </Grid>    
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Entry x:Name="txtUsuario" Grid.Row="1"  Placeholder="Usuário *"  FontSize="16" TextChanged="TxtUsuario_TextChanged"/>
+            <Entry x:Name="txtSenha" Grid.Row="2" Placeholder="Senha *" FontSize="16" IsPassword="True"/>
+            <Button x:Name="btClikedAutenticacao" Text="Acessar" BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start" Grid.Row="3"
+                    BorderRadius="10" BorderWidth="5"  />
+            <Label Text="*Campo(s) Obrigatório(s)" HorizontalOptions="End" Grid.Row="4" Margin="0,10,0,0" FontSize="12" TextColor="#9A3334" />
+            <Label x:Name="lbEsqueciSenha" Text="Esqueci minha senha" HorizontalOptions="End" Grid.Row="5" Margin="0,10,0,0" FontSize="12">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="logoMP.png" Grid.Column="0" VerticalOptions="Fill" 
+                       Margin="0,0,0,0" />
+                <Image Source="login_logo_simp_colaborador.jpg" Grid.Column="1" VerticalOptions="Fill" 
+                       Margin="0,0,0,0"  />
+
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

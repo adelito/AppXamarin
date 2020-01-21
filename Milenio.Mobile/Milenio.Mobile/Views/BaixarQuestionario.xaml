@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.BaixarQuestionario"
+             xmlns:controle="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             xmlns:local="clr-namespace:Mobile.Views"
+             Title="Baixar Questionário">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btVisita" Text="Visita a Instituição"  BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start" Grid.Row="1"
+                    BorderRadius="10" BorderWidth="5" Clicked="BtVisita_Clicked" />
+            <Button x:Name="btQuestionariosBaixados" Text="Questionários Baixados" BackgroundColor="#9A3334" TextColor="White" HeightRequest="50" WidthRequest="20" VerticalOptions="Start" Grid.Row="2"
+                    BorderRadius="10" BorderWidth="5" Clicked="BtQuestionariosBaixados_Clicked"/>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="logoMP.png" Grid.Column="0" VerticalOptions="Fill" 
+                       Margin="0,0,0,0" />
+                <Image Source="login_logo_simp_colaborador.jpg" Grid.Column="1" VerticalOptions="Fill" 
+                       Margin="0,0,0,0"  />
+
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
